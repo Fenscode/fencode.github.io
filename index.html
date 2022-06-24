@@ -331,7 +331,7 @@
             <div class="contact-form">
               <h2 class="mb-4">Interested to work together? Let's talk</h2>
 
-              <form action="mailto:fenil.connect@gmail.com?bo":message.text method="get">
+              <form name="contact_form" method="get">
                 <div class="row">
                   <div class="col-lg-6 col-12">
                     <input type="text" class="form-control" name="name" placeholder="Your Name" id="name">
@@ -346,14 +346,43 @@
                   </div>
 
                   <div class="ml-lg-auto col-lg-5 col-12">
-                    <input type="submit" class="form-control submit-btn" value="Send Button">
+                    <input type="submit" class="form-control submit-btn" value="Send Button" onclick="return (validate());">
                   </div>
                 </div>
               </form>
+              <p id="msg"></p>
             </div>
-          </div>
 
-        </div>
+            <script>
+
+            // Form validations
+            function validate() {
+                if( document.contact_form.name.value == "" ) {
+                  alert( "Please introduce your name!" );
+                  document.contact_form.name.focus() ;
+                  return false;
+                }
+                else if(document.contact_form.email.value == "" ) {
+                  alert( "Please specify your Email!" );
+                  document.contact_form.email.focus() ;
+                  return false;
+                } else {
+                  sendEmail();
+                  return false;
+                }
+            }
+
+            // Open Email Pop-up
+            function sendEmail() {
+              var name =document.getElementById("name").value;
+              var toEmail = document.getElementById("email").value;
+              var body = document.getElementById("message").value;
+              document.getElementById("msg").innerHTML =  toEmail;
+              window.location.href = ("mailto:"+toEmail+"?&subject="+name+" wants you to make a connetion"+"&body="+body);
+              var frm = document.getElementsByName("contact_form")[0];
+              frm.reset();
+            }
+            </script>
       </div>
     </section>
 
