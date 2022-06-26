@@ -350,7 +350,6 @@
                   </div>
                 </div>
               </form>
-              <p id="msg"></p>
             </div>
 
             <script>
@@ -377,7 +376,6 @@
               var name =document.getElementById("name").value;
               var toEmail = document.getElementById("email").value;
               var body = document.getElementById("message").value;
-              document.getElementById("msg").innerHTML =  toEmail;
               window.location.href = ("mailto:"+toEmail+"?&subject="+name+" wants you to make a connetion"+"&body="+body);
               var frm = document.getElementsByName("contact_form")[0];
               frm.reset();
